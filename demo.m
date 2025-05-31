@@ -22,7 +22,6 @@ lambda=[0.00001];
 
 
 for v=1:viewnum
-    data{v}=data{v};
     %data{v} = zscore(data{v})';
     data{v}=data{v}';
 end
@@ -33,7 +32,6 @@ for dd=1:length(d)
 for ll=1:length(l)
 for lm=1:length(lambda)
 tic;
-opt.isreverse=1;
 opt.isnorm=1;
 [L,output]=VCMSC(data,num_p(pp),d(dd),l(ll),k,lambda(lm),opt);
 toc

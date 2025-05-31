@@ -52,8 +52,10 @@ view_distance=(view_distance+view_distance')/2;
 sigma = mean(mean(view_distance));
 dist_matrix=view_distance/sigma;
 %idx = spectralcluster(view_graph,s,'Distance','precomputed');
-idx=quickshift(dist_matrix,num_view-1,0.3);
-
+%idx=quickshift(dist_matrix,num_view-1,0.3);
+dpc = DPC([], [], 1, 4, 1, 1, 0, 1.5, false, []);
+dpc = dpc.fit(dist_matrix);
+idx=dpc.labels_+1;
 alpha = zeros(s,num_view);
 
 beta = ones(s,1)*sqrt(1/s);
